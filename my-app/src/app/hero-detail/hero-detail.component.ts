@@ -13,6 +13,9 @@ import { HeroService } from '../hero.service';
 
 export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
+  powers = ['Really Smart', 'Super Flexible',
+            'Super Hot', 'Weather Changer',
+            'Loving', 'Nothing', 'Strong', 'Cunning', 'Jumping'];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,5 +35,13 @@ export class HeroDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  submitted = false;
+
+  onSubmit() { this.submitted = true; }
+
+  newHero() {
+    this.hero = new Hero(42, '', '');
   }
 }
